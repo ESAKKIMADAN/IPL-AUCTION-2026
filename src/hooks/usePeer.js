@@ -17,11 +17,17 @@ export const usePeer = (isHost, roomCode) => {
     console.log(`[Peer] Initializing ${isHost ? 'Host' : 'Guest'} for room ${roomCode}`);
     
     const newPeer = new Peer(isHost ? `ipl2026-${roomCode}` : undefined, {
+      host: '0.peerjs.com',
+      port: 443,
+      secure: true,
       debug: 1,
       config: {
         'iceServers': [
-          { url: 'stun:stun.l.google.com:19302' },
-          { url: 'stun:stun1.l.google.com:19302' },
+          { urls: 'stun:stun.l.google.com:19302' },
+          { urls: 'stun:stun1.l.google.com:19302' },
+          { urls: 'stun:stun2.l.google.com:19302' },
+          { urls: 'stun:stun3.l.google.com:19302' },
+          { urls: 'stun:stun4.l.google.com:19302' },
         ],
         sdpSemantics: 'unified-plan'
       }
