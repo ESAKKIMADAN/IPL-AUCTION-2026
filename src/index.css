@@ -1,0 +1,47 @@
+@import "tailwindcss";
+@import "tailwindcss/theme";
+
+@theme {
+  --color-ipl-blue: #134785;
+  --color-ipl-gold: #C99D3F;
+  --color-ipl-dark: #001C46;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@layer base {
+  body {
+    @apply bg-[#001C46] text-white font-sans antialiased overflow-x-hidden;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(201, 157, 63, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(19, 71, 133, 0.4) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+.ipl-gradient {
+  background: linear-gradient(135deg, #134785 0%, #001C46 100%);
+}
+
+.gold-outline {
+  box-shadow: 0 0 15px rgba(201, 157, 63, 0.3);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.auction-timer-critical {
+  @apply text-red-500 animate-pulse-slow;
+  text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+@keyframes progress {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+.progress-bar {
+  animation: progress 30s linear forwards;
+}
