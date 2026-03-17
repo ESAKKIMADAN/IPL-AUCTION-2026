@@ -16,11 +16,10 @@ export const usePeer = (isHost, roomCode) => {
     setStatus('connecting');
     console.log(`[Peer] Initializing ${isHost ? 'Host' : 'Guest'} for room ${roomCode}`);
     
-    const newPeer = new Peer(isHost ? `ipl2026-${roomCode}` : undefined, {
-      host: '0.peerjs.com',
-      port: 443,
-      secure: true,
+    const targetPeerId = isHost ? `ipl-26-v1-${roomCode}` : undefined;
+    const newPeer = new Peer(targetPeerId, {
       debug: 1,
+      secure: true,
       config: {
         'iceServers': [
           { urls: 'stun:stun.l.google.com:19302' },
@@ -70,7 +69,7 @@ export const usePeer = (isHost, roomCode) => {
         });
       });
     } else if (roomCode) {
-      const targetId = `ipl2026-${roomCode}`;
+      const targetId = `ipl-26-v1-${roomCode}`;
       console.log(`[Peer] Connecting to host: ${targetId}`);
       
       const connectToHost = () => {

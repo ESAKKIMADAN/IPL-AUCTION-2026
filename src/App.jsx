@@ -20,7 +20,12 @@ const initialState = {
 function gameReducer(state, action) {
   switch (action.type) {
     case 'SET_ROOM':
-      return { ...state, roomCode: action.payload.code, isHost: action.payload.isHost };
+      return { 
+        ...initialState, 
+        roomCode: action.payload.code, 
+        isHost: action.payload.isHost,
+        phase: 'lobby'
+      };
     case 'SYNC_STATE':
       // CRITICAL: Preserve local isHost and roomCode to prevent sync loops
       return { 
